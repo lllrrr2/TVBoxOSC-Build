@@ -2,9 +2,9 @@
 
 #获取目录
 CURRENT_DIR=$(cd $(dirname $0); pwd)
-num=$(find $CURRENT_DIR -name gradlew  | awk -F"/" '{print NF-1}')
-DIR=$(find $CURRENT_DIR -name gradlew  | cut -d \/ -f$num)
-cd $CURRENT_DIR/$DIR
+num=$(find $CURRENT_DIR -name gradlew  | awk -F"/" '{print NF-1}'| head -1)
+DIR=$(find $CURRENT_DIR -name gradlew  | cut -d \/ -f$num | head -1)
+cd $DIR
 # 打包 恢复老版
 cp -f $CURRENT_DIR//DIY/T/build.gradle $CURRENT_DIR/$DIR/app/build.gradle
 
