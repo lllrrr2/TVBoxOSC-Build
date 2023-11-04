@@ -32,6 +32,12 @@ jobs:
           git checkout ${{ env.commit }}
           echo "tag=$(git log --date=format:'%Y%m%d-%H%M' --pretty=format:%cd ${{ env.commitS }} -1)" >> $GITHUB_ENV
           zip -q -x ".git/*" -r ${{ env.commitS }}-source.zip .
+      - name: Restore Old Build Gradle
+        if: ${{ env.commit }}
+        working-directory: TVBoxOSC
+        run: |
+          cp -f ${{ github.workspace }}/.github/workflows/build.gradle app/build.gradle
+          
       - name: Release Apk Sign
         if: ${{ env.commit }}
         working-directory: TVBoxOSC
@@ -46,7 +52,8 @@ jobs:
           sed -i '$a\RELEASE_KEY_ALIAS=TVBoxOSC'            ./gradle.properties
           sed -i '$a\RELEASE_STORE_PASSWORD=TVBoxOSC'       ./gradle.properties
           sed -i '$a\RELEASE_KEY_PASSWORD=TVBoxOSC'         ./gradle.properties
-      - name: Add py support
+               
+      - name: Add Py Support
         if: ${{ env.commit }}
         working-directory: TVBoxOSC
         run: |
