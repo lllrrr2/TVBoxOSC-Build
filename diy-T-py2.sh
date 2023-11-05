@@ -24,10 +24,7 @@ echo "RELEASE_KEY_PASSWORD=TVBoxOSC" >>$CURRENT_DIR/$DIR/gradle.properties
 
 # 图标 与Q版统一
 cp $CURRENT_DIR/DIY/Res/drawable/app_banner.png $CURRENT_DIR/$DIR/app/src/main/res/drawable/app_banner.png
-cp $CURRENT_DIR/DIY/Res/drawable-hdpi/app_icon.png $CURRENT_DIR/$DIR/app/src/main/res/drawable-hdpi/app_icon.png
-cp $CURRENT_DIR/DIY/Res/drawable-xhdpi/app_icon.png $CURRENT_DIR/$DIR/app/src/main/res/drawable-xhdpi/app_icon.png
-cp $CURRENT_DIR/DIY/Res/drawable-xxhdpi/app_icon.png $CURRENT_DIR/$DIR/app/src/main/res/drawable-xxhdpi/app_icon.png
-cp $CURRENT_DIR/DIY/Res/drawable-xxxhdpi/app_icon.png $CURRENT_DIR/$DIR/app/src/main/res/drawable-xxxhdpi/app_icon.png
+cp $CURRENT_DIR/DIY/Res/drawable-xxxhdpi/app_icon.png $CURRENT_DIR/$DIR/app/src/main/res/drawable/app_icon.png
 
 #添加PY支持
 wget --no-check-certificate -qO- "https://raw.githubusercontent.com/UndCover/PyramidStore/main/aar/pyramid-1011.aar" -O $CURRENT_DIR/$DIR/app/libs/pyramid.aar
