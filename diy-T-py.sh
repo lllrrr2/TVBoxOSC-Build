@@ -6,7 +6,7 @@ num=$(find $CURRENT_DIR -name gradlew  | awk -F"/" '{print NF-1}'| head -1)
 DIR=$(find $CURRENT_DIR -name gradlew  | cut -d \/ -f$num | head -1)
 cd $DIR
 # 打包 恢复老版
-cp -f $CURRENT_DIR//DIY/T/build.gradle $CURRENT_DIR/$DIR/app/build.gradle
+#cp -f $CURRENT_DIR//DIY/T/build.gradle $CURRENT_DIR/$DIR/app/build.gradle
 
 #签名
 signingConfigs='ICAgIHNpZ25pbmdDb25maWdzIHtcCiAgICAgICAgaWYgKHByb2plY3QuaGFzUHJvcGVydHkoIlJFTEVBU0VfU1RPUkVfRklMRSIpKSB7XAogICAgICAgICAgICBteUNvbmZpZyB7XAogICAgICAgICAgICAgICAgc3RvcmVGaWxlIGZpbGUoUkVMRUFTRV9TVE9SRV9GSUxFKVwKICAgICAgICAgICAgICAgIHN0b3JlUGFzc3dvcmQgUkVMRUFTRV9TVE9SRV9QQVNTV09SRFwKICAgICAgICAgICAgICAgIGtleUFsaWFzIFJFTEVBU0VfS0VZX0FMSUFTXAogICAgICAgICAgICAgICAga2V5UGFzc3dvcmQgUkVMRUFTRV9LRVlfUEFTU1dPUkRcCiAgICAgICAgICAgICAgICB2MVNpZ25pbmdFbmFibGVkIHRydWVcCiAgICAgICAgICAgICAgICB2MlNpZ25pbmdFbmFibGVkIHRydWVcCiAgICAgICAgICAgICAgICBlbmFibGVWM1NpZ25pbmcgPSB0cnVlXAogICAgICAgICAgICAgICAgZW5hYmxlVjRTaWduaW5nID0gdHJ1ZVwKICAgICAgICAgICAgfVwKICAgICAgICB9XAogICAgfVwKXA=='
@@ -22,8 +22,9 @@ echo "RELEASE_KEY_ALIAS=TVBoxOSC" >>$CURRENT_DIR/$DIR/gradle.properties
 echo "RELEASE_STORE_PASSWORD=TVBoxOSC" >>$CURRENT_DIR/$DIR/gradle.properties
 echo "RELEASE_KEY_PASSWORD=TVBoxOSC" >>$CURRENT_DIR/$DIR/gradle.properties
 
-# 图标 恢复老版
-cp $CURRENT_DIR/DIY/T/app_banner.png $CURRENT_DIR/$DIR/app/src/main/res/drawable/app_banner.png
+# 图标 与Q版统一
+cp $CURRENT_DIR/DIY/Res/drawable/app_banner.png $CURRENT_DIR/$DIR/app/src/main/res/drawable/app_banner.png
+cp $CURRENT_DIR/DIY/Res/drawable-xxxhdpi/app_icon.png $CURRENT_DIR/$DIR/app/src/main/res/drawable/app_icon.png
 
 #添加PY支持
 wget --no-check-certificate -qO- "https://raw.githubusercontent.com/UndCover/PyramidStore/main/aar/pyramid-1011.aar" -O $CURRENT_DIR/$DIR/app/libs/pyramid.aar
